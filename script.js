@@ -8,9 +8,17 @@ function Book(name, author, pages, read) {
     this.exists = false;
 }
 
+Book.prototype.toggleRead = function() {
+    if (this.read) {
+        this.read = false;
+        return;
+    }
+    this.read = true;
+}
+
 
 function makeObject() {
-    let newBook = new Book(form.name.value, form.author.value, form.pages.value, form.read.value);
+    let newBook = new Book(form.name.value, form.author.value, form.pages.value, form.read.checked);
     console.log(newBook);
     return newBook;
 }
@@ -19,6 +27,7 @@ function addBookToLibrary() {
     myLibrary.push(makeObject());
     console.log(myLibrary);
     dialog.close();
+    form.reset();
 
     createCardOnce();
 }
@@ -50,7 +59,8 @@ function createCardDiv(book, index) {
 
     let readBtn = document.createElement('button');
     readBtn.classList.add("read-btn");
-    readBtn.textContent = "READ";
+    readOrNot();
+    readBtn.addEventListener('click', changeReadStatus);
     
 
     let deleteBtn = document.createElement('button');
@@ -62,7 +72,36 @@ function createCardDiv(book, index) {
     newCard.appendChild(readBtn);
     newCard.appendChild(deleteBtn);
     cardContainer.appendChild(newCard);
+
+    function readOrNot() {
+        if (book.read === true) {
+            readBtn.textContent = "READ";
+            return;
+        }
+        
+        readBtn.textContent = 'NOT READ YET';
+    }
+
+    function changeReadStatus() {
+        //change object property in array
+        console.log(book.read);
+        book.toggleRead();
+        console.log(book.read);
+
+        // let libIndex = readBtn.dataset.libIndex;
+        // if (myLibrary[+libIndex].read) {
+        //     myLibrary[+libIndex].read = false;
+        //     return;
+        // }
+        // myLibrary[+libIndex].read = true;
+
+        //change display
+        readOrNot();
+    }
+
 }
+
+
 
 function deleteCard(e) {
     //target's data attribute
@@ -70,11 +109,8 @@ function deleteCard(e) {
     //remove aka splice
 
     //deletes array from library
-    console.log(e) // e.target.dataset.libIndex = '1'
     let libIndex = e.target.dataset.libIndex;
-    console.log(e.target.dataset.libIndex);
     myLibrary.splice(+libIndex, 1);
-    console.log(myLibrary);
 
     //deleteCard
     e.target.closest('.card').remove();
@@ -103,6 +139,8 @@ let form = document.querySelector('form');
 let inputName = document.querySelector('input#name');
 
 let cardContainer = document.querySelector('.card-container');
+
+let readBtn = document.querySelector('.read-btn');
 
 
 
