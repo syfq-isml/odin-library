@@ -16,20 +16,19 @@ function makeObject() {
 }
 
 function addBookToLibrary() {
-    
     myLibrary.push(makeObject());
     console.log(myLibrary);
     dialog.close();
 
-    updateArray();
+    createCardOnce();
 }
 
-function updateArray() {
+function createCardOnce() {
     myLibrary.forEach((book, index) => {
         if (book.exist === true) return;
 
         console.log(index);
-        createCard(book, index);
+        createCardDiv(book, index);
         book.exist = true;
     })
 }
@@ -37,7 +36,7 @@ function updateArray() {
 // ^^ to add data-attr to assign index
 // 2nd parameter is index
 
-function createCard(book, index) {
+function createCardDiv(book, index) {
     let newCard = document.createElement('div');
     newCard.classList.add("card");
     
