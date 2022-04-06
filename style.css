@@ -48,10 +48,20 @@ input[type='text'] {
     background-color: white;
 }
 
-.read-btn {
+.read-btn-true {
+    border: 2px solid rgb(22, 128, 22);
+    height: fit-content;
+    width: fit-content;
+    color:rgb(22, 128, 22);
+    border-radius: 3px;
+    background-color: transparent;
+    margin-top: 20px;
+}
+
+.read-btn-false {
     border: 2px solid rgb(141, 27, 27);
-    height: fit-content ;
-    width: 11ch;
+    height: fit-content;
+    width: fit-content;
     color:rgb(141, 27, 27);
     border-radius: 3px;
     background-color: transparent;
@@ -61,7 +71,7 @@ input[type='text'] {
 .delete-btn {
     border: 2px solid rgb(117, 11, 11);
     font-size: 1rem;
-    height: 1.5rem;
+    height: fit-content;
     width: fit-content;
     color:rgb(255, 255, 255);
     border-radius: 3px;

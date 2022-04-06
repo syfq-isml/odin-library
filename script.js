@@ -58,7 +58,6 @@ function createCardDiv(book, index) {
     No. of Pages: ${book.pages} pages`;
 
     let readBtn = document.createElement('button');
-    readBtn.classList.add("read-btn");
     readOrNot();
     readBtn.addEventListener('click', changeReadStatus);
     
@@ -76,17 +75,19 @@ function createCardDiv(book, index) {
     function readOrNot() {
         if (book.read === true) {
             readBtn.textContent = "READ";
+            readBtn.className = "read-btn-true";
             return;
         }
         
         readBtn.textContent = 'NOT READ YET';
+        readBtn.className = "read-btn-false";
     }
 
     function changeReadStatus() {
         //change object property in array
-        console.log(book.read);
+        
         book.toggleRead();
-        console.log(book.read);
+        
 
         // let libIndex = readBtn.dataset.libIndex;
         // if (myLibrary[+libIndex].read) {
