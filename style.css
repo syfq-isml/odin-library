@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Pacifico&display=swap');
+
 body {
     background-color: rgb(146, 204, 146);
+    font-family: 'Noto Sans', sans-serif;
 }
 
 dialog {
@@ -36,6 +39,7 @@ input[type='text'] {
 
     display: flex;
     flex-direction: column;
+    justify-content: center;
 
     background-color: white;
 }
@@ -47,5 +51,16 @@ input[type='text'] {
     color:rgb(141, 27, 27);
     border-radius: 3px;
     background-color: transparent;
+    margin-top: 20px;
+}
+
+.delete-btn {
+    border: 2px solid rgb(117, 11, 11);
+    font-size: 1rem;
+    height: 1.5rem;
+    width: fit-content;
+    color:rgb(255, 255, 255);
+    border-radius: 3px;
+    background-color: rgb(197, 40, 40);
     margin-top: 20px;
 }

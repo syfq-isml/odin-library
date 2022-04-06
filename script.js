@@ -21,22 +21,29 @@ function addBookToLibrary() {
     console.log(myLibrary);
     dialog.close();
 
-    loopArray();
+    updateArray();
 }
 
-function loopArray() {
-    myLibrary.forEach((book) => {
+function updateArray() {
+    myLibrary.forEach((book, index) => {
         if (book.exist === true) return;
 
-        createCard(book);
+        console.log(index);
+        createCard(book, index);
         book.exist = true;
     })
 }
 
-function createCard(book) {
+// ^^ to add data-attr to assign index
+// 2nd parameter is index
+
+function createCard(book, index) {
     let newCard = document.createElement('div');
     newCard.classList.add("card");
-    newCard.setAttribute('style', 'white-space: pre-line;')
+    
+   
+
+    newCard.setAttribute('style', 'white-space: pre-line;');
     newCard.textContent = 
     `Name of Book: ${book.name} \n
     Name of Author: ${book.author} \n
@@ -45,11 +52,46 @@ function createCard(book) {
     let readBtn = document.createElement('button');
     readBtn.classList.add("read-btn");
     readBtn.textContent = "READ";
-
-    newCard.appendChild(readBtn);
-    cardContainer.appendChild(newCard);
     
+
+    let deleteBtn = document.createElement('button');
+    deleteBtn.setAttribute('data-lib-index', `${index}`);
+    deleteBtn.classList.add("delete-btn");
+    deleteBtn.textContent = "DELETE";
+    deleteBtn.addEventListener('click', deleteCard);
+    
+    newCard.appendChild(readBtn);
+    newCard.appendChild(deleteBtn);
+    cardContainer.appendChild(newCard);
 }
+
+function deleteCard(e) {
+    //target's data attribute
+    //find data attribute in lib
+    //remove aka splice
+
+    //deletes array from library
+    console.log(e) // e.target.dataset.libIndex = '1'
+    let libIndex = e.target.dataset.libIndex;
+    console.log(e.target.dataset.libIndex);
+    myLibrary.splice(+libIndex, 1);
+    console.log(myLibrary);
+
+    //deleteCard
+    e.target.closest('.card').remove();
+
+    updateIndexOfDelBtn();
+}
+
+function updateIndexOfDelBtn() {
+    let deleteBtn = document.querySelectorAll('.delete-btn');
+    deleteBtn.forEach((btn, index) => {
+        btn.dataset.libIndex = `${index}`;
+    });
+}
+
+
+
 
 let newBook = document.querySelector('.new-book');
 let dialog = document.querySelector('#new-book-modal');
