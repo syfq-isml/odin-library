@@ -92,6 +92,8 @@ function updateIndexOfDelBtn() {
 
 
 
+
+
 let newBook = document.querySelector('.new-book');
 let dialog = document.querySelector('#new-book-modal');
 let cancelButton = document.querySelector('.cancel-btn');
