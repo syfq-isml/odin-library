@@ -29,7 +29,23 @@ input[type='text'] {
     border-radius: 10px;
     box-shadow: 3px 3px 5px gray;
     width: 30ch;
-    height: 40ch;
+    height: 30ch;
+    line-height: 10px;
+
+    padding: 10px;
+
+    display: flex;
+    flex-direction: column;
 
     background-color: white;
+}
+
+.read-btn {
+    border: 2px solid rgb(141, 27, 27);
+    height: 1.5rem;
+    width: 7ch;
+    color:rgb(141, 27, 27);
+    border-radius: 3px;
+    background-color: transparent;
+    margin-top: 20px;
 }

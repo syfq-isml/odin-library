@@ -38,10 +38,17 @@ function createCard(book) {
     newCard.classList.add("card");
     newCard.setAttribute('style', 'white-space: pre-line;')
     newCard.textContent = 
-    `${book.name} by ${book.author} \n
-    ${book.pages} pages`;
+    `Name of Book: ${book.name} \n
+    Name of Author: ${book.author} \n
+    No. of Pages: ${book.pages} pages`;
 
+    let readBtn = document.createElement('button');
+    readBtn.classList.add("read-btn");
+    readBtn.textContent = "READ";
+
+    newCard.appendChild(readBtn);
     cardContainer.appendChild(newCard);
+    
 }
 
 let newBook = document.querySelector('.new-book');
