@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library | TheOdinProject</title>
+    <link rel="stylesheet" href="./normalize.css">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./script.js" defer></script>
+</head>
+<body>
+    <div class="wrapper-all">
+        <main>
+            <button class="new-book">NEW BOOK</button>
+            <div class="card-container">
+                <div class="card">
+                    <p>Name</p>
+                    <p>Author</p>
+                    <p>Pages</p>
+                    <p>Read</p>
+                </div>
+            </div>
+        </main>
+
+        <!-- modal -->
+        <dialog id="new-book-modal">
+            <form method="dialog">
+                <label for="name">Book name</label><input type="text" name="name" id="name">
+                <label for="author">Name of Author</label><input type="text" name="author" id="author">
+                <label for="pages">No. of pages</label><input type="text" name="pages" id="pages">
+                <div><input type="checkbox" name="read" id="read"><label for="read">I have read this book</label></div>
+            </form>
+            <button class="submit-btn">Submit</button>
+            <button class="cancel-btn">Cancel</button>
+        </dialog>
+
+    </div>
+
+</body>
+</html>
